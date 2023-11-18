@@ -8,8 +8,8 @@ import lombok.Setter;
 
 import java.util.Set;
 
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -23,6 +23,8 @@ public class User {
     private String name;
 
     private String email;
+
+    private String password;
 
     private String role;
 

@@ -3,6 +3,7 @@ import com.db.grad.main.exception.ResourceNotFoundException;
 import com.db.grad.main.model.Security;
 import com.db.grad.main.projection.SecuritiesProjection;
 import com.db.grad.main.repository.SecurityRepository;
+import com.db.grad.main.repository.TradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.sql.Date;

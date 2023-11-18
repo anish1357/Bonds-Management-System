@@ -2,20 +2,27 @@ package com.db.grad.main.service;
 
 import com.db.grad.main.exception.ResourceNotFoundException;
 //import com.db.grad.javaapi.model.Dogs;
+import com.db.grad.main.model.Security;
 import com.db.grad.main.model.Trade;
 import com.db.grad.main.projection.TradeProjection;
+import com.db.grad.main.repository.SecurityRepository;
 import com.db.grad.main.repository.TradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 //import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TradeService {
 
     @Autowired
     TradeRepository tradeRepository;
+
+    @Autowired
+    SecurityRepository securityRepository;
+
 
 
     public Trade saveTrade(Trade trade )
@@ -27,14 +34,10 @@ public class TradeService {
         return tradeRepository.findTrades();
     }
 
-
-
-//    public List<Trade> getTradesById(long id)
-//    {
-//        List<Trade> filteredTrades =  tradeRepository.findAllTradesById(id);
-////                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this ID: "));
-//        return filteredTrades;
-//    }
+  public  List<Trade> getTrades(long id) throws ResourceNotFoundException
+  {
+      return tradeRepository.findAllBySecurityId(id);
+  }
 
     public TradeProjection findTradeById(long id ) throws ResourceNotFoundException
     {
@@ -43,26 +46,23 @@ public class TradeService {
         return trade;
     }
 
-//    public Trade updateTrade( long id, Trade newTradeInfo) throws ResourceNotFoundException
-//    {
-//        Trade tradeToUpdate = tradeRepository.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
-//
-//        tradeToUpdate.setStatus(newTradeInfo.getStatus());
-//
-//        final Trade updatedTrade = tradeRepository.save(tradeToUpdate);
-//
-//        return updatedTrade;
-//    }
+    public Security getSecurityByTradeId(Long tradeId) throws ResourceNotFoundException {
+        Trade trade = tradeRepository.findById(tradeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Trade not found with id: " + tradeId));
 
+        return trade.getSecurity();
+    }
 
-    public Trade deleteTrade( long id ) throws ResourceNotFoundException
+    public Trade updateTrade( long id, Trade newTradeInfo) throws ResourceNotFoundException
     {
-        Trade trade = tradeRepository.findById(id)
+        Trade tradeToUpdate = tradeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
 
-        tradeRepository.delete(trade);
+        tradeToUpdate.setStatus(newTradeInfo.getStatus());
 
-        return trade;
+        final Trade updatedTrade = tradeRepository.save(tradeToUpdate);
+
+        return updatedTrade;
     }
+
 }
