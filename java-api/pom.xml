@@ -9,14 +9,12 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.db.grad</groupId>
-    <artifactId>bond-project</artifactId>
+    <artifactId>arrakis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Bond Project</name>
-    <description>Bond Management Project</description>
+    <name>arrakis</name>
+    <description>arrakis</description>
     <properties>
         <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
