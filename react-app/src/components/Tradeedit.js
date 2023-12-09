@@ -8,7 +8,7 @@ const Tradeedit = (props) => {
   const [tradeId] = useState(props.trade.id)
   const [trade, setTrade] = useState([]);
     const fetchTrade = async()=>{
-      const response = await fetch(`http://localhost:5000/api/trade/${tradeId}`, {
+      const response = await fetch(`http://localhost:5000/api/v1/trades/${tradeId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

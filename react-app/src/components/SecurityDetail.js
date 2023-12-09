@@ -20,21 +20,21 @@ const SecurityDetail = (props) => {
     console.log("Security Fetched")
   }
 
-  // const fetchTrades = async() => {
-  //   const response = await fetch(`http://localhost:5000/api/security/get-all-trades-for-security/${securityId}`, {
-  //     method: 'GET',
-  //     headers : {
-  //       'Content-Type': 'application/json',
-  //       'auth-token' : localStorage.getItem('token')
-  //     }
-  //   });
-  //   const trade = await response.json();
-  //   setTrades(trade);
-  // }
+  const fetchTrades = async() => {
+    const response = await fetch(`http://localhost:5000/api/v1/trades/security/${1}`, {
+      method: 'GET',
+      headers : {
+        'Content-Type': 'application/json',
+        'auth-token' : localStorage.getItem('token')
+      }
+    });
+    const trade = await response.json();
+    setTrades(trade);
+  }
 
   useEffect(() => { 
     fetchSecurity();
-    // fetchTrades();
+    fetchTrades();
   },[])
 
   // const security = {

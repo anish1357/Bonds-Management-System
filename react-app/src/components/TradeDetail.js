@@ -5,7 +5,7 @@ const TradeDetail = (props) => {
   const params = useParams()
   const [trade, setTrade] = useState([]);
     const fetchTrade = async()=>{
-      const response = await fetch(`http://localhost:5000/api/trade/${params.id}`, {
+      const response = await fetch(`http://localhost:5000/api/v1/trades/${params.id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
