@@ -34,9 +34,9 @@ public class TradeService {
         return tradeRepository.findTrades();
     }
 
-  public  List<Trade> getTrades(long id) throws ResourceNotFoundException
+  public  List<TradeProjection> getTradesBySecurityId(long id) throws ResourceNotFoundException
   {
-      return tradeRepository.findAllBySecurityId(id);
+      return   tradeRepository.findAllBySecurityId(id);
   }
 
     public TradeProjection findTradeById(long id ) throws ResourceNotFoundException

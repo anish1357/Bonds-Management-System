@@ -33,6 +33,11 @@ public class TradeController {
         return tradeService.getAllTradesFiltered();
     }
 
+    @GetMapping("/trades/security/{id}")
+    public List<TradeProjection> getTradesBySecurityId(@PathVariable(value = "id") Long id) throws ResourceNotFoundException {
+        return tradeService.getTradesBySecurityId(id);
+    }
+
     @PostMapping("/trades")
     public Trade createTrade(@Valid @RequestBody Trade trade) {
         return tradeService.saveTrade(trade);

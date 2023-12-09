@@ -1,6 +1,7 @@
 package com.db.grad.main.service;
 import com.db.grad.main.exception.ResourceNotFoundException;
 import com.db.grad.main.model.Security;
+import com.db.grad.main.model.Trade;
 import com.db.grad.main.projection.SecuritiesProjection;
 import com.db.grad.main.repository.SecurityRepository;
 import com.db.grad.main.repository.TradeRepository;
@@ -13,6 +14,9 @@ import java.util.List;
 public class SecurityService {
     @Autowired
     SecurityRepository securityRepository;
+
+    @Autowired
+    TradeRepository tradeRepository;
 
 
     public Security saveSecurity(Security security )
@@ -52,6 +56,13 @@ public class SecurityService {
         final Security updatedSecurity = securityRepository.save(securityToUpdate);
 
         return updatedSecurity;
+    }
+
+    public Security getSecurityByTradeId(Long tradeId) throws ResourceNotFoundException {
+        Trade trade = tradeRepository.findById(tradeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Trade not found with id: " + tradeId));
+
+        return trade.getSecurity();
     }
 
 

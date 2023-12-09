@@ -46,6 +46,13 @@ public class SecurityController {
         return ResponseEntity.ok().body(security);
     }
 
+    @GetMapping("/securities/trade/{id}")
+    public ResponseEntity<Security> getSecurityByTradeId(@PathVariable(value = "id") Long id)
+            throws ResourceNotFoundException {
+        Security security = securityService.getSecurityByTradeId(id);
+        return ResponseEntity.ok().body(security);
+    }
+
     @PutMapping("/securities/{id}")
     public ResponseEntity<Security> updateSecurity(@PathVariable(value = "id") Long id,
                                                    @Valid @RequestBody Security newSecurityInfo) throws ResourceNotFoundException {
