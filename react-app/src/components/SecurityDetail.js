@@ -21,7 +21,7 @@ const SecurityDetail = (props) => {
   }
 
   const fetchTrades = async() => {
-    const response = await fetch(`http://localhost:5000/api/v1/trades/security/${1}`, {
+    const response = await fetch(`http://localhost:5000/api/v1/trades/security/${security.id}`, {
       method: 'GET',
       headers : {
         'Content-Type': 'application/json',
