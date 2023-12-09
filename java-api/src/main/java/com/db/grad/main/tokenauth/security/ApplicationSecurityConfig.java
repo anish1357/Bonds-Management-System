@@ -85,6 +85,8 @@ public class ApplicationSecurityConfig {
                 .requestMatchers(mvc.pattern("/api/v1/")).permitAll()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
+        http.headers().frameOptions().disable();
+
 
         return http.build();
     }

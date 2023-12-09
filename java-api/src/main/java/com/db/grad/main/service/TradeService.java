@@ -53,7 +53,7 @@ public class TradeService {
         return trade.getSecurity();
     }
 
-    public Trade updateTrade( long id, Trade newTradeInfo) throws ResourceNotFoundException
+    public TradeProjection updateTrade( long id, Trade newTradeInfo) throws ResourceNotFoundException
     {
         Trade tradeToUpdate = tradeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Trade not found for this id :: " + id));
@@ -62,7 +62,7 @@ public class TradeService {
 
         final Trade updatedTrade = tradeRepository.save(tradeToUpdate);
 
-        return updatedTrade;
+        return tradeRepository.findTradebyId(id);
     }
 
 }

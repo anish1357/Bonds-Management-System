@@ -44,6 +44,13 @@ public class TradeController {
         TradeProjection trade = tradeService.findTradeById(id);
         return ResponseEntity.ok().body(trade);
     }
+
+    @PutMapping("/trades/{id}")
+    public ResponseEntity<TradeProjection> UpdateTrade(@PathVariable(value = "id") Long id,@Valid @RequestBody Trade trade)
+            throws ResourceNotFoundException {
+        TradeProjection newTrade = tradeService.updateTrade(id,trade);
+        return ResponseEntity.ok().body(newTrade);
+    }
 //    @DeleteMapping("/trades/{id}")
 //    public Map<String, Boolean> deleteTrade(@PathVariable(value = "id") Long id)
 //            throws ResourceNotFoundException {
