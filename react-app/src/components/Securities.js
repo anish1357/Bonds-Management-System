@@ -36,7 +36,7 @@ const Securities = (props) => {
   // }
   const [securities, setSecurities] = useState([]);
   const fetchAllSecurities = async()=>{
-    const response = await fetch(`http://localhost:5000/api/security/`, {
+    const response = await fetch(`http://localhost:5000/api/v1/securities`, {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',

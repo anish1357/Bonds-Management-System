@@ -8,7 +8,7 @@ const SecurityDetail = (props) => {
   const [trades, setTrades] = useState([]);
 
   const fetchSecurity = async()=>{
-    const responce = await fetch(`http://localhost:5000/api/security/${params.id}`, {
+    const responce = await fetch(`http://localhost:5000/api/v1/securities/${params.id}`, {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
